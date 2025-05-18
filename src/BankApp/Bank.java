@@ -10,15 +10,19 @@ public abstract class Bank {
     protected String bankCode;
     protected List<Account> accounts = new ArrayList<>();
 
-    public Bank(String bankName, String branchName) {
-        this.bankName = bankName;
-        this.branchName = branchName;
-        this.bankCode = generateBankCode();
+    public Account findAccount1(String accountNumber) {
+        for (Account acc : accounts) {
+            if (acc.getAccountNumber().equals(accountNumber)) {
+                return acc;
+            }
+        }
+        return null;
     }
 
-    public String generateBankCode() {
-        return BANK_CODE_PREFIX + (bankCounter++);
+    public List<Account> getAccounts() {
+        return accounts;
     }
+
 
     public abstract void openAccount(Account account);
     public abstract void displayBankInfo();

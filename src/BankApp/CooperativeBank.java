@@ -2,13 +2,13 @@ package BankApp;
 
 public class CooperativeBank extends Bank {
     public CooperativeBank(String bankName, String branchName) {
-        super(bankName, branchName);
+        super();
     }
 
     @Override
     public void openAccount(Account account) {
         accounts.add(account);
-        System.out.println("Account opened successfully in Cooperative Bank.");
+        System.out.println("Account opened successfully at " + bankName);
     }
 
     @Override

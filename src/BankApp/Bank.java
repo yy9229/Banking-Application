@@ -1,7 +1,6 @@
 package BankApp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class Bank {
     protected String bankName;
@@ -17,14 +16,23 @@ public abstract class Bank {
         this.bankCode = generateBankCode();
     }
 
-    public abstract void openAccount(Account account);
-    public abstract void displayBankInfo();
-
     public String generateBankCode() {
         return BANK_CODE_PREFIX + (bankCounter++);
     }
 
-    public List<Account> getAccounts() {
-        return accounts;
+    public abstract void openAccount(Account account);
+    public abstract void displayBankInfo();
+
+    public Account findAccount(String accNo) {
+        for (Account acc : accounts) {
+            if (acc.getAccountNumber().equals(accNo)) {
+                return acc;
+            }
+        }
+        return null;
+    }
+
+    public void addAccount(Account acc) {
+        accounts.add(acc);
     }
 }
